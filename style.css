@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.letter-input{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #121213;
+    color: white;
+}
+
+.letter-input::placeholder {
+    color: transparent;
+}
+
+.correct-letter:placeholder-shown, .misplaced-letter:placeholder-shown {
+    background-color: #121213;
+    border: 2px solid white;
+    color: black;
+}
+
+.correct-letter:focus, .correct-letter:not(:placeholder-shown) {
+    background-color: #16e16e;
+    color: white;
+}
+
+.misplaced-letter:focus, .misplaced-letter:not(:placeholder-shown) {
+    background-color: yellow;
+    color: black;
+}
+
+.letter-group {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+body{
+    font-family: Outfit;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 400px;
+    background-color: #121213;    
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: #dfdfdf;
+}
+
+.big-input{
+    width: 60%;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: black;
+}
+
+#wordOfTheDay{
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: bold;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.word-letter{
+    margin: 0px;
+    color:#16e16e;
+}
+
+.reset{
+    width: 140px;
+    height: 30px;
+    border-radius: 4px;
+    border: 0px;
+    font-family: Outfit;
+    font-size: 16px;
+    background-color: white;
+}
+
+.letters{
+    color:#16e16e;
+    margin:0px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.lettersNot{
+    color:red;
+    margin:0px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.couldBe{
+    color:yellow;
+    margin:0px;
+    font-size: 18px;
+    text-transform: uppercase;
+}

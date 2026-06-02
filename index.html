@@ -4,39 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="">
     <h1 id="Head">Wordle Assistant</h1>
 
-    Correct Letters
-    <input type="text" id="correctLetters1" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
-    <input type="text" id="correctLetters2" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
-    <input type="text" id="correctLetters3" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
-    <input type="text" id="correctLetters4" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
-    <input type="text" id="correctLetters5" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
-
-    Misplaced Letters
-    <input type="text" id="misplacedLetters1" placeholder="Enter misplaced letters (e.g. A, E, I)">
-    <input type="text" id="misplacedLetters2" placeholder="Enter misplaced letters (e.g. A, E, I)">
-    <input type="text" id="misplacedLetters3" placeholder="Enter misplaced letters (e.g. A, E, I)">
-    <input type="text" id="misplacedLetters4" placeholder="Enter misplaced letters (e.g. A, E, I)">
-    <input type="text" id="misplacedLetters5" placeholder="Enter misplaced letters (e.g. A, E, I)">
-
-    Excluded Letters
-    <input type="text" id="excludedLetters" placeholder="Enter excluded letters (e.g. A, E, I)">
-
-    <h2>Word Of The Day</h2>
-    <span id="wordOfTheDay" style="display: flex; flex-direction: row; font-size: 24px; font-weight: bold;">
-        <p id="outWordLetters1">_</p>
-        <p id="outWordLetters2">_</p>
-        <p id="outWordLetters3">_</p>
-        <p id="outWordLetters4">_</p>
-        <p id="outWordLetters5">_</p>
+    <h2>Correct Letters</h2>
+    <span class="letter-group">
+        <input type="text" class="letter-input correct-letter" id="correctLetters1" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input correct-letter" id="correctLetters2" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input correct-letter" id="correctLetters3" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input correct-letter" id="correctLetters4" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input correct-letter" id="correctLetters5" maxlength="1" placeholder="_">
+    </span>
+    
+    <h2>Misplaced Letters</h2>
+    <span class="letter-group">
+        <input type="text" class="letter-input misplaced-letter" id="misplacedLetters1" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input misplaced-letter" id="misplacedLetters2" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input misplaced-letter" id="misplacedLetters3" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input misplaced-letter" id="misplacedLetters4" maxlength="1" placeholder="_">
+        <input type="text" class="letter-input misplaced-letter" id="misplacedLetters5" maxlength="1" placeholder="_">
     </span>
 
-    Letters Not In Word
-    <p id="outExcludedLetters"></p>
+    <h2>Excluded Letters</h2>
+    <input type="text" class="big-input" id="excludedLetters" placeholder="">
 
+    <h2>Word Of The Day</h2>
+    <span id="wordOfTheDay">
+        <p class="word-letter" id="outWordLetters1">_</p>
+        <p class="word-letter" id="outWordLetters2">_</p>
+        <p class="word-letter" id="outWordLetters3">_</p>
+        <p class="word-letter" id="outWordLetters4">_</p>
+        <p class="word-letter" id="outWordLetters5">_</p>
+    </span>
+
+    <button class="reset" id="resetButton">Reset</button>
+
+    <!-- <h2>Letters <span style="color: #16e16e;">In </span>Word</h2>
+    <p class="letters" id="inWord"></p> -->
+    
+    <h2>Possible Words</h2>
+    <p class="couldBe" id="possibleWords"></p>
+
+    <h2>Letters <span style="color: red;">Not In </span>Word</h2>
+    <p class="lettersNot" id="outExcludedLetters"></p>
+
+
+    <script src="words.js"></script>
     <script src="wordle.js"></script>
 </body>
 </html>
