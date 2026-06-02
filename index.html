@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo</title>
+</head>
+<body>
+    <h1 id="Head">Wordle Assistant</h1>
+
+    Correct Letters
+    <input type="text" id="correctLetters1" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
+    <input type="text" id="correctLetters2" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
+    <input type="text" id="correctLetters3" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
+    <input type="text" id="correctLetters4" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
+    <input type="text" id="correctLetters5" placeholder="Enter correct letters (e.g. A, E, I)" maxlength="1">
+
+    Misplaced Letters
+    <input type="text" id="misplacedLetters1" placeholder="Enter misplaced letters (e.g. A, E, I)">
+    <input type="text" id="misplacedLetters2" placeholder="Enter misplaced letters (e.g. A, E, I)">
+    <input type="text" id="misplacedLetters3" placeholder="Enter misplaced letters (e.g. A, E, I)">
+    <input type="text" id="misplacedLetters4" placeholder="Enter misplaced letters (e.g. A, E, I)">
+    <input type="text" id="misplacedLetters5" placeholder="Enter misplaced letters (e.g. A, E, I)">
+
+    Excluded Letters
+    <input type="text" id="excludedLetters" placeholder="Enter excluded letters (e.g. A, E, I)">
+
+    <h2>Word Of The Day</h2>
+    <span id="wordOfTheDay" style="display: flex; flex-direction: row; font-size: 24px; font-weight: bold;">
+        <p id="outWordLetters1">_</p>
+        <p id="outWordLetters2">_</p>
+        <p id="outWordLetters3">_</p>
+        <p id="outWordLetters4">_</p>
+        <p id="outWordLetters5">_</p>
+    </span>
+
+    Letters Not In Word
+    <p id="outExcludedLetters"></p>
+
+    <script src="wordle.js"></script>
+</body>
+</html>
