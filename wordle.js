@@ -190,20 +190,60 @@ document.getElementById("resetButton").addEventListener("click", () => {
 })
 
 
-async function getCurrentTabId() {
-let queryOptions = { active: true, lastFocusedWindow: true };
-let [tab] = await chrome.tabs.query(queryOptions);
-return tab.id;
-}
-let currentTabId;
-getCurrentTabId().then(id => {
-    currentTabId = id;
-    console.log("Current Tab ID:", currentTabId);
-}).catch(err => console.error("Error getting current tab ID:", err));
+// async function getCurrentTabId() {
+// let queryOptions = { active: true, lastFocusedWindow: true };
+// let [tab] = await chrome.tabs.query(queryOptions);
+// return tab.id;
+// }
+// let currentTabId;
+// getCurrentTabId().then(id => {
+//     currentTabId = id;
+//     console.log("Current Tab ID:", currentTabId);
+// }).catch(err => console.error("Error getting current tab ID:", err));
 
-chrome.scripting.executeScript({
-    target: { tabId:474734881 },
-    function: () => {
-        return (document.title);
-    }
-})
+// chrome.scripting.executeScript({
+//     target: { tabId:474734881 },
+//     function: () => {
+//         return(document.title);
+//     }
+// })
+
+// async function scrapeWordle() {
+//     const tab = await chrome.tabs.create({
+//         url:"https://www.nytimes.com/games/wordle/index.html",
+//         active: true
+//     })
+
+//     const waitTabLoad = () => new Promise((resolve, reject)=> {
+//         const listener = (tabId, changeInfo) => {
+//             if(tabId === tab.id && changeInfo.status === 'complete') {
+//                 chrome.tabs.onUpdated.removeListener(listener);
+//                 resolve();
+//             }
+//         }
+        
+//         chrome.tabs.onUpdated.addListener(listener)
+//         setTimeout(() => {
+//             chrome.tabs.onUpdated.removeListener(listener);
+//             console.log("Tab load timeout");
+//             reject(new Error("ERRORORORR"))
+//         },15000);
+
+//     })
+
+//     await waitTabLoad();
+
+//     return chrome.scripting.executeScript({
+//         target: { tabId: tab.id},
+//         func: () => ({
+//             title: document.title,
+//             url: location.href
+//         })
+//     });
+
+    
+// }
+
+// scrapeWordle();
+
+

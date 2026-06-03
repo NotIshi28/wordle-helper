@@ -11,5 +11,16 @@
     "activeTab",
     "scripting",
     "tabs"
+  ],
+  "host_permissions": [
+    "https://*://*",
+    "*://*/*" 
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.nytimes.com/games/wordle/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
   ]
 }
