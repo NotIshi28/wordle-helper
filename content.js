@@ -7,7 +7,9 @@ document.body.innerHTML = "<h1>Wordle Helper Active</h1>";
 
 
 setTimeout(() => {
+    
     const rows = document.getElementsByClassName("Row-module_row__pwpBq");
+    document.body.appendChild(document.createElement("button")).setAttribute("onclick", "alert(\"Wordle Helper Active\")", "style","width:200px; height:100px; position:absolute;");
     let data = []
     data.push(rows[0].children[0].children[0].innerText);
     console.log(rows[0].children[0].children[0].ariaLabel[0]);
