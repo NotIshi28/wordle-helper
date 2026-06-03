@@ -188,3 +188,22 @@ document.getElementById("resetButton").addEventListener("click", () => {
     restoreInputs();
     computeFilteredWords();
 })
+
+
+async function getCurrentTabId() {
+let queryOptions = { active: true, lastFocusedWindow: true };
+let [tab] = await chrome.tabs.query(queryOptions);
+return tab.id;
+}
+let currentTabId;
+getCurrentTabId().then(id => {
+    currentTabId = id;
+    console.log("Current Tab ID:", currentTabId);
+}).catch(err => console.error("Error getting current tab ID:", err));
+
+chrome.scripting.executeScript({
+    target: { tabId:474734881 },
+    function: () => {
+        return (document.title);
+    }
+})

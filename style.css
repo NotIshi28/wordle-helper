@@ -112,3 +112,9 @@ h2 {
     font-size: 18px;
     text-transform: uppercase;
 }
+
+.linkToWordle{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
