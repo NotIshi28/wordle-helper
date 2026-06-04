@@ -1,6 +1,3 @@
-document.body.style.backgroundColor = "purple";
-
-
 let correct = [[], [], [], [], []];
 let wrong = [];
 let misplaced = [[], [], [], [], []];
