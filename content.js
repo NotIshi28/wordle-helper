@@ -7,10 +7,11 @@ let wrong = [];
 let misplaced = [[], [], [], [], []];
 function evalWordGrid() {
     const rows = document.getElementsByClassName("Row-module_row__pwpBq");
-    document.body.appendChild(document.createElement("button")).setAttribute("style", "width:200px; height:100px; position:absolute;");
+    // document.body.appendChild(document.createElement("button")).setAttribute("style", "width:200px; height:100px; position:absolute;");
     let data = []
     // data.push(rows[0].children[0].children[0].innerText);
-    console.log(rows[0].children[0].children[0].ariaLabel);
+    
+    //collecting data from grid
     for (let i = 0; i < rows.length; i++) {
         if( rows[i].children[0].children[0].innerText == "") {
             continue;
@@ -20,8 +21,12 @@ function evalWordGrid() {
             data.push(rows[i].children[j].children[0].ariaLabel);
         }
     }
-
+    console.log(data);
+    //sorting collected data into their respective types
     for (let i = 0; i < data.length; i++) {
+        if(data[i].length < 21){
+            break;
+        }
         if (data[i].includes("correct")) {
             if(correct[i % 5].length ===1){
                 continue;
@@ -31,9 +36,16 @@ function evalWordGrid() {
             }
         } else if (data[i].length > 25) {
             //need2fix
-            misplaced[i%5].push(data[i][12]);
-        } else {
-            wrong.push(data[i][12]);
+            if(misplaced[i%5].length === 1 ){
+                continue;
+            }
+            else{
+                misplaced[i%5].push(data[i][12]);     
+            }
+        } else if(wrong.includes(data[i][12])){
+                continue;
+        } else{
+                wrong.push(data[i][12]);
         }
     }
     // data.push(rows[0].children[1].children[0].innerText);
@@ -49,22 +61,22 @@ function evalWordGrid() {
 }
 
 
-setTimeout(() => {
-    evalWordGrid();
-    sendData();
-    
-}, 5000);
+
 
 function sendData(){
     chrome.storage.local.set({sharedData: {correct: correct, misplaced: misplaced, wrong: wrong}}, () => {
         console.log("Data saved to local storage");
+        console.log(misplaced);
     });
 }
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        evalWordGrid();
-        sendData();
+        setTimeout(() => {
+            evalWordGrid();
+            sendData();
+            
+        }, 1500);
     }
 });
 

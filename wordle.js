@@ -189,24 +189,18 @@ document.getElementById("resetButton").addEventListener("click", () => {
     computeFilteredWords();
 })
 
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//     // message.correctData.forEach((letter, index) => {
-//     //     if(letter.length > 0) {
-//     //         correctLetters[index].value = letter;
-//     //         document.getElementById(`outWordLetters${index +1}`).innerHTML = letter.toUpperCase();
-//     //     }
-//     // })
-//     console.log("SAGFAFASF")
-//     console.log(message.text);
-//     sendResponse({status: "success"});
-//     return true;
-// })
 
 
 document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get(["sharedData"], (result) => {
     console.log(result);
-    misplacedLettersArray = result.sharedData.misplaced || [[], [], [], [], []];
+    console.log(result.sharedData.misplaced);
+    misplacedLettersArray = result.sharedData.misplaced;
+    for(let i = 0; i < misplacedLettersArray.length; i++) {
+        if(misplacedLetters[i]){
+            misplacedLetters[i].value = misplacedLettersArray[i].join("");
+        }
+    }
     correctLetters.forEach((element, index) => {
         if(correctLetters[index] != ""){
             element.value = result.sharedData.correct ? result.sharedData.correct[index] : "";
