@@ -189,61 +189,33 @@ document.getElementById("resetButton").addEventListener("click", () => {
     computeFilteredWords();
 })
 
-
-// async function getCurrentTabId() {
-// let queryOptions = { active: true, lastFocusedWindow: true };
-// let [tab] = await chrome.tabs.query(queryOptions);
-// return tab.id;
-// }
-// let currentTabId;
-// getCurrentTabId().then(id => {
-//     currentTabId = id;
-//     console.log("Current Tab ID:", currentTabId);
-// }).catch(err => console.error("Error getting current tab ID:", err));
-
-// chrome.scripting.executeScript({
-//     target: { tabId:474734881 },
-//     function: () => {
-//         return(document.title);
-//     }
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//     // message.correctData.forEach((letter, index) => {
+//     //     if(letter.length > 0) {
+//     //         correctLetters[index].value = letter;
+//     //         document.getElementById(`outWordLetters${index +1}`).innerHTML = letter.toUpperCase();
+//     //     }
+//     // })
+//     console.log("SAGFAFASF")
+//     console.log(message.text);
+//     sendResponse({status: "success"});
+//     return true;
 // })
 
-// async function scrapeWordle() {
-//     const tab = await chrome.tabs.create({
-//         url:"https://www.nytimes.com/games/wordle/index.html",
-//         active: true
-//     })
 
-//     const waitTabLoad = () => new Promise((resolve, reject)=> {
-//         const listener = (tabId, changeInfo) => {
-//             if(tabId === tab.id && changeInfo.status === 'complete') {
-//                 chrome.tabs.onUpdated.removeListener(listener);
-//                 resolve();
-//             }
-//         }
-        
-//         chrome.tabs.onUpdated.addListener(listener)
-//         setTimeout(() => {
-//             chrome.tabs.onUpdated.removeListener(listener);
-//             console.log("Tab load timeout");
-//             reject(new Error("ERRORORORR"))
-//         },15000);
-
-//     })
-
-//     await waitTabLoad();
-
-//     return chrome.scripting.executeScript({
-//         target: { tabId: tab.id},
-//         func: () => ({
-//             title: document.title,
-//             url: location.href
-//         })
-//     });
-
-    
-// }
-
-// scrapeWordle();
-
-
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["sharedData"], (result) => {
+    console.log(result);
+    misplacedLettersArray = result.sharedData.misplaced || [[], [], [], [], []];
+    correctLetters.forEach((element, index) => {
+        if(correctLetters[index] != ""){
+            element.value = result.sharedData.correct ? result.sharedData.correct[index] : "";
+            document.getElementById(`outWordLetters${index + 1}`).innerHTML = element.value ? element.value.toUpperCase() : "_";
+        }
+    })
+    excludedLetters.value = result.sharedData.wrong ? result.sharedData.wrong.join("") : "";
+    document.getElementById("outExcludedLetters").innerHTML = excludedLetters.value;
+    computeFilteredWords();
+    saveState();
+  });
+});
