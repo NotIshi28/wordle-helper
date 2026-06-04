@@ -1,7 +1,7 @@
 {
-  "name": "Basic Extension",
-  "description": "First Extension",
-  "version": "1.0",
+  "name": "Wordle Helper",
+  "description": "A Chrome extension that helps you solve Wordle puzzles.",
+  "version": "3.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",

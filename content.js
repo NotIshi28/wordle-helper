@@ -1,6 +1,5 @@
 document.body.style.backgroundColor = "purple";
 
-document.body.innerHTML = "<h1>Wordle Helper Active</h1>";
 
 let correct = [[], [], [], [], []];
 let wrong = [];
@@ -80,3 +79,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+setTimeout(() => {
+    evalWordGrid();
+    sendData();
+}, 5000);
